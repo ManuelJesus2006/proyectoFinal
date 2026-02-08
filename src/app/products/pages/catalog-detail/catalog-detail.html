@@ -1,0 +1,25 @@
+@if (product() == null){
+<div class="flex flex-col justify-center items-center min-h-screen">
+    <img class="w-20"
+        src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
+    <h2 class="text-white text-2xl">Obteniendo información...</h2>
+</div>
+}@else {
+<div class="flex items-center justify-center min-h-screen">
+    <div class="flex items-center justify-between bg-gray-600 p-8 rounded-3xl w-full max-w-4xl">
+        
+        <img class="w-80 rounded-xl" [src]="product()?.imageUrl" />
+
+        <div class="flex flex-col items-end text-right">
+            <h1 class="text-2xl text-gray-300 font-bold uppercase tracking-wider">
+                {{product()?.business}}
+            </h1>
+            <h1 class="text-5xl text-white font-bold mt-2">
+                {{product()?.name}}
+            </h1>
+        </div>
+
+    </div>
+</div>
+
+}

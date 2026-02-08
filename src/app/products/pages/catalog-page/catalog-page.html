@@ -1,0 +1,32 @@
+<search-input placeholder="Busque por nombre..." (value)="buscarResultados($event)" />
+
+@if (isLoading()){
+<div class="flex justify-center items-center min-h-screen flex-col">
+    <img class="w-20"
+        src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
+    <h2 class="text-white text-xl">Obteniendo información...</h2>
+</div>
+
+}@else if (!isLoading() && products() != null){
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+
+    @for (product of products(); track product.id; let index = $index) {
+    <div class="bg-gray-600 w-80 rounded-2xl p-3 flex flex-col h-full">
+        <img class="rounded-2xl" src="{{product.imageUrl}}" />
+        <h2 class="mt-auto flex text-center justify-start text-2xl font-bold text-white pt-4">{{product.name}}</h2>
+        <br>
+        <button class="cursor-pointer group relative items-center gap-2 overflow-hidden rounded-full
+         bg-blue-600 px-5 py-1 text-lg font-semibold text-white hover:bg-blue-500"
+            [routerLink]="['/catalog/techProducts',product.id]">Ver detalles</button>
+    </div>
+    }
+
+
+</div>
+}@else if(!isLoading() && products() == null){
+    <div class="flex justify-center items-center min-h-screen flex-col">
+    <img class="w-20"
+        src="https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150696455.jpg?semt=ais_hybrid&w=740&q=80"/>
+    <h2 class="text-white text-xl">No se encontrarón resultados</h2>
+</div>
+}

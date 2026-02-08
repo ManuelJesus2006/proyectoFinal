@@ -1,0 +1,10 @@
+<div class="flex justify-between p-4 w-120">
+    <input [placeholder]="placeholder()" type="text" class="px-17 py-4 text-white border rounded-2xl" #txtSearch
+        (keyup.enter)="value.emit(txtSearch.value)">
+    <button routerLink="/catalog" class="cursor-pointer group relative inline-flex items-center gap-2 overflow-hidden rounded-full
+         bg-blue-600 px-5 py-1 text-lg font-semibold text-white hover:bg-blue-500"
+        (click)="value.emit(txtSearch.value)">
+
+        Buscar
+    </button>
+</div>
