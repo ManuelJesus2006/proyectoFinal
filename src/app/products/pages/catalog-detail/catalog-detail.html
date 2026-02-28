@@ -1,25 +1,41 @@
 @if (product() == null){
-<div class="flex flex-col justify-center items-center min-h-screen">
-    <img class="w-20"
-        src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
-    <h2 class="text-white text-2xl">Obteniendo información...</h2>
-</div>
-}@else {
-<div class="flex items-center justify-center min-h-screen">
-    <div class="flex items-center justify-between bg-gray-600 p-8 rounded-3xl w-full max-w-4xl">
-        
-        <img class="w-80 rounded-xl" [src]="product()?.imageUrl" />
+  <div class="flex flex-col justify-center items-center min-h-screen">
+      <img class="w-20" src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
+      <h2 class="text-white text-2xl">Obteniendo información...</h2>
+  </div>
+} @else {
+  <div class="flex flex-col items-center min-h-screen p-8">
+      
+      <div class="flex items-center justify-between bg-gray-600 p-8 rounded-3xl w-full max-w-4xl">
+          <img class="w-60 rounded-xl" [src]="product()?.imageUrl" />
+          <div class="flex flex-col items-end text-right">
+              <h1 class="text-2xl text-gray-300 font-bold uppercase tracking-wider">
+                  {{product()?.business}}
+              </h1>
+              <h1 class="text-5xl text-white font-bold mt-2">
+                  {{product()?.name}}
+              </h1>
+          </div>
+      </div>
 
-        <div class="flex flex-col items-end text-right">
-            <h1 class="text-2xl text-gray-300 font-bold uppercase tracking-wider">
-                {{product()?.business}}
-            </h1>
-            <h1 class="text-5xl text-white font-bold mt-2">
-                {{product()?.name}}
-            </h1>
-        </div>
+      <div class="flex gap-4 mt-8 w-full max-w-4xl border-b border-gray-700 pb-2">
+          <button [routerLink]="['price']" routerLinkActive="text-blue-500 border-b-2 border-blue-500" 
+                  class="text-white px-4 py-2 hover:bg-gray-800 rounded-t-lg transition-all">
+              Información
+          </button>
+          <button [routerLink]="['details']" routerLinkActive="text-blue-500 border-b-2 border-blue-500" 
+                  class="text-white px-4 py-2 hover:bg-gray-800 rounded-t-lg transition-all">
+              Detalles
+          </button>
+          <button routerLink="/catalog/techProducts" 
+                  class="text-gray-400 px-4 py-2 hover:text-white transition-all ml-auto">
+              Volver
+          </button>
+      </div>
 
-    </div>
-</div>
+      <div class="w-full max-w-4xl mt-6 p-4 bg-gray-900 rounded-xl">
+          <router-outlet></router-outlet>
+      </div>
 
+  </div>
 }

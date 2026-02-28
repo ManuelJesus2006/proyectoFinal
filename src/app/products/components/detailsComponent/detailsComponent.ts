@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
 import { TechProductsResponse } from '../../interface/techProducts.interface';
 import { TechProductService } from '../../services/products.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { KeyValuePipe } from '@angular/common';
+
 
 @Component({
-  selector: 'app-catalog-detail',
-  imports: [RouterLink, RouterOutlet],
-  templateUrl: './catalog-detail.html',
+  selector: 'app-details-component',
+  imports: [KeyValuePipe],
+  templateUrl: './detailsComponent.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CatalogDetail { 
+export class DetailsComponent { 
   techProductsService = inject(TechProductService)
   id = input.required<number>()
   product = signal<TechProductsResponse | null>(null)

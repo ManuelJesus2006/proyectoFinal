@@ -1,0 +1,13 @@
+@if (product() === null) {
+  <div class="flex flex-col items-center justify-center py-10">
+    <img class="w-12" 
+         src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
+    <h2 class="text-white text-xl">Cargando precio...</h2>
+  </div>
+} @else {
+  <div class="text-white p-6">
+    <h3 class="text-3xl font-bold text-green-400">
+      {{ product()?.price | currency:'EUR' }}
+    </h3>
+  </div>
+}

@@ -3,15 +3,17 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 import { SearchInput } from "../../components/search-input/search-input";
 import { TechProductsResponse } from '../../interface/techProducts.interface';
 import { TechProductService } from '../../services/products.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-catalog-page',
-  imports: [SearchInput, RouterLink],
+  imports: [SearchInput, RouterLink, FormsModule],
   templateUrl: './catalog-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogPage {
   isLoading = signal(true)
+  isGridView = signal(true)
   techProductsService = inject(TechProductService)
   constructor() {
     this.techProductsService.showAllProducts().subscribe({

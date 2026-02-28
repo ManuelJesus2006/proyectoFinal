@@ -1,0 +1,19 @@
+@if (product() === null) {
+  <div class="flex flex-col items-center justify-center py-10">
+    <img class="w-12" src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
+    <h2 class="text-white text-xl">Cargando detalles...</h2>
+  </div>
+} @else {
+  <div class="p-6 text-white">
+    <ul class="space-y-2">
+      @for (item of product()?.characteristics | keyvalue; track item.key) {
+        @if (item.value !== null) {
+          <li class="flex justify-between border-b border-gray-700 py-2">
+            <span class="text-gray-400 capitalize">{{ item.key.replace('_', ' ') }}:</span>
+            <span class="font-bold">{{ item.value }}</span>
+          </li>
+        }
+      }
+    </ul>
+  </div>
+}
