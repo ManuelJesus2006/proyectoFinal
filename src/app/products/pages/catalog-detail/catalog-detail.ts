@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
 import { TechProductsResponse } from '../../interface/techProducts.interface';
 import { TechProductService } from '../../services/products.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-catalog-detail',
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet, RouterLinkActive],
   templateUrl: './catalog-detail.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

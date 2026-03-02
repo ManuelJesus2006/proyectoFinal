@@ -18,20 +18,25 @@
           </div>
       </div>
 
-      <div class="flex gap-4 mt-8 w-full max-w-4xl border-b border-gray-700 pb-2">
-          <button [routerLink]="['price']" routerLinkActive="text-blue-500 border-b-2 border-blue-500" 
-                  class="text-white px-4 py-2 hover:bg-gray-800 rounded-t-lg transition-all">
-              Información
-          </button>
-          <button [routerLink]="['details']" routerLinkActive="text-blue-500 border-b-2 border-blue-500" 
-                  class="text-white px-4 py-2 hover:bg-gray-800 rounded-t-lg transition-all">
-              Detalles
-          </button>
-          <button routerLink="/catalog/techProducts" 
-                  class="text-gray-400 px-4 py-2 hover:text-white transition-all ml-auto">
-              Volver
-          </button>
-      </div>
+      <div class="flex gap-4 mt-8 w-full max-w-4xl border-b border-gray-700 pb-0">
+    <button [routerLink]="['price']" 
+            routerLinkActive="text-blue-400 border-b-2 border-blue-400 bg-blue-500/10" 
+            [routerLinkActiveOptions]="{exact: false}"
+            class="text-white px-6 py-3 hover:bg-gray-800 rounded-t-xl transition-all font-semibold">
+        Información
+    </button>
+
+    <button [routerLink]="['details']" 
+            routerLinkActive="text-blue-400 border-b-2 border-blue-400 bg-blue-500/10" 
+            class="text-white px-6 py-3 hover:bg-gray-800 rounded-t-xl transition-all font-semibold">
+        Detalles
+    </button>
+
+    <button routerLink="/catalog/techProducts" 
+            class="text-gray-400 px-4 py-3 hover:text-white transition-all ml-auto">
+        Volver
+    </button>
+</div>
 
       <div class="w-full max-w-4xl mt-6 p-4 bg-gray-900 rounded-xl">
           <router-outlet></router-outlet>
