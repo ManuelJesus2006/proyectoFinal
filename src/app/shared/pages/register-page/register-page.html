@@ -1,0 +1,70 @@
+<div class="relative min-h-screen w-full bg-cover bg-center flex items-center justify-center px-4"
+    style="background-image: url('https://img.freepik.com/fotos-premium/capa-plana-dispositivos-accesorios-tecnologicos-modernos-sobre-fondo-azul_14117-758383.jpg?semt=ais_hybrid&w=740&q=80');">
+
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <div class="relative z-10 w-full max-w-md">
+        <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl">
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-white">Crear <span class="text-blue-400">Cuenta</span></h2>
+                <p class="text-gray-400 mt-2">Únete a la comunidad de Tech Products</p>
+            </div>
+
+            <form #rgForm="ngForm" (ngSubmit)="registrarUsuario()" class="space-y-5">
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">Nombre completo</label>
+                    <input type="text" name="name" [(ngModel)]="name" #nameField="ngModel" required
+                        class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        placeholder="Tu nombre">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">Correo electrónico</label>
+                    <input type="email" name="email" [(ngModel)]="email" #emailField="ngModel" required email
+                        class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        placeholder="ejemplo@tech.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-1">Contraseña</label>
+                    <input type="password" name="password" [(ngModel)]="password" #passField="ngModel" required
+                        minlength="5"
+                        class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                        placeholder="•••••">
+
+                    @if (passField.invalid && passField.touched) {
+                    <small class="text-red-400 mt-1 block">Mínimo 5 caracteres.</small>
+                    }
+                </div>
+
+                <button type="submit" [disabled]="rgForm.invalid || isLoading()"
+                    class="w-full py-3 px-6 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg shadow-blue-600/20">
+
+                    @if (isLoading()) {
+                    <div class="flex items-center justify-center gap-2">
+                        <img class="w-10"
+                            src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/cupertino_activity_indicator_large.gif" />
+                        <span>Creando cuenta...</span>
+                    </div>
+                    } @else {
+                    <span>Registrarse</span>
+                    }
+                </button>
+            </form>
+
+            <p class="text-center text-gray-400 mt-6 text-sm">
+                ¿Ya tienes una cuenta?
+                <a routerLink="/login" class="text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">Inicia
+                    sesión</a>
+            </p>
+            @if (isLoading()) {
+            <div class="flex items-center justify-center gap-2 text-white">
+                <p>Si el registro tarda más de lo normal es porque el backend se está iniciando, espere por
+                    favor...</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>
